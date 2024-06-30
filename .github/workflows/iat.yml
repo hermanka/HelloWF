@@ -20,7 +20,7 @@ jobs:
   
   sast:
     runs-on: ubuntu-latest
-    name: Static Analysis Security Testing
+    name: Static Analysis Security Test
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
         
   dast:
     runs-on: ubuntu-latest
-    name: Dynamic Analysis Security Testing
+    name: Dynamic Analysis Security Test
     needs: deploy
     steps:
       - uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
   ptest:
     runs-on: ubuntu-latest
     name: Performance Calculation
-    needs: dast
+    needs: [sast, dast, hijack]
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
