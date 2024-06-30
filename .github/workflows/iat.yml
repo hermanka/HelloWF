@@ -16,11 +16,30 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a one-line script
         run: echo Hello, world!
+   
   
+  sast:
+    runs-on: ubuntu-latest
+    name: SAST
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo Hello, world!
+
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Deploy using PHPCryptfish
     needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+  dast:
+    runs-on: ubuntu-latest
+    name: DAST
+    needs: deploy
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
